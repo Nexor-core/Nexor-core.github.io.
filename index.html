@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>رادمهر بیات | برنامه‌نویس</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;900&family=Space+Grotesk:wght@700&display=swap">
+<style>
+:root{
+  --hero:#2433ff;--hero-ink:#ffffff;--pop:#ffd23f;
+  --bg:#f4f5ff;--surface:#ffffff;--ink:#0d1033;--muted:#555b85;--line:#cfd3f5;--accent:#2433ff;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0a0c24;--surface:#12163a;--ink:#eceeff;--muted:#a3a9d8;--line:#262c66;--accent:#ffd23f;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0a0c24;--surface:#12163a;--ink:#eceeff;--muted:#a3a9d8;--line:#262c66;--accent:#ffd23f;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.9}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hero);z-index:10}
+.hero{background:var(--hero);color:var(--hero-ink);padding:72px 20px 88px;overflow:hidden}
+.hero-in{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.hero h1{font-family:"Space Grotesk","Vazirmatn",sans-serif;direction:ltr;text-align:right;font-size:clamp(3.2rem,10vw,6.4rem);line-height:1;margin:0 0 20px;font-weight:700;letter-spacing:-.04em}
+.hero p{font-size:1.2rem;margin:0 0 28px;max-width:30ch;font-weight:300}
+.btn{display:inline-block;background:var(--pop);color:#0d1033;font-weight:600;text-decoration:none;padding:10px 28px;border-radius:999px}
+.btn:hover,.btn:focus-visible{outline:3px solid var(--hero-ink);outline-offset:3px}
+.code{direction:ltr;text-align:left;background:#0d1033;color:#dfe3ff;border-radius:14px;padding:22px 24px;font:14px/1.8 ui-monospace,Menlo,Consolas,monospace;transform:rotate(-2deg);box-shadow:10px 10px 0 var(--pop)}
+.code .k{color:#8fa0ff}.code .s{color:var(--pop)}.code .c{color:#7b82c4}
+.cursor{display:inline-block;width:8px;height:1.1em;background:var(--pop);vertical-align:text-bottom;animation:blink 1s steps(2) infinite}
+@keyframes blink{to{opacity:0}}
+@media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+main{max-width:1000px;margin:0 auto;padding:64px 20px 40px}
+section{margin-bottom:64px}
+h2{font-size:2rem;font-weight:900;margin:0 0 24px}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.proj{background:var(--surface);border:2px solid var(--ink);border-radius:10px;padding:22px;box-shadow:6px 6px 0 var(--accent)}
+.proj h3{margin:0 0 6px;font-size:1.15rem}
+.proj p{margin:0 0 12px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0;direction:ltr}
+.tags li{font:12px ui-monospace,Menlo,Consolas,monospace;border:1px solid var(--line);border-radius:6px;padding:0 8px}
+.job{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--line)}
+.job .when{color:var(--muted)}
+.job h3{margin:0;font-size:1.1rem}
+.job p{margin:4px 0 0;color:var(--muted);max-width:60ch}
+.skills{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.skills li{font-size:1.1rem;font-weight:600;background:var(--surface);border:2px solid var(--ink);border-radius:999px;padding:2px 18px}
+footer{background:var(--hero);color:var(--hero-ink);text-align:center;padding:56px 20px}
+footer a{color:var(--pop);font-size:1.4rem;font-weight:600;text-decoration:none;direction:ltr;unicode-bidi:isolate}
+footer p{margin:8px 0 0;font-weight:300}
+footer a.tg{font-size:1.05rem;direction:rtl;border-bottom:2px solid var(--pop)}
+footer{padding:88px 20px 32px}
+footer h2{font-size:clamp(2rem,6vw,3.4rem);line-height:1.3;margin:0 0 20px;font-weight:900}
+.mail{display:inline-block;font-size:clamp(1.1rem,4vw,1.6rem);color:var(--hero-ink);border-bottom:3px solid var(--pop);padding-bottom:2px}
+.social{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:40px 0 64px}
+.pill{font-size:1.05rem;color:var(--hero-ink);border:2px solid var(--hero-ink);border-radius:999px;padding:6px 30px;transition:background .2s,color .2s}
+.pill:hover,.pill:focus-visible{background:var(--pop);border-color:var(--pop);color:#0d1033;outline:none}
+.copy{font-size:.9rem;font-weight:300;opacity:.75;margin:0}
+@media (max-width:760px){
+  .hero{padding:48px 20px 64px}
+  .hero-in{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr;gap:0}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <div>
+      <h1>Radmehr Bayat</h1>
+      <p>برنامه‌نویس فول‌استک. چیزهایی می‌سازم که سریع، تمیز و بی‌دردسر کار کنند.</p>
+      <a class="btn" href="#contact">ارتباط با من</a>
+    </div>
+    <div class="code" aria-hidden="true">
+<span class="k">const</span> radmehr = {<br>
+&nbsp;&nbsp;role: <span class="s">"Full-stack Developer"</span>,<br>
+&nbsp;&nbsp;stack: [<span class="s">"TypeScript"</span>, <span class="s">"Python"</span>, <span class="s">"Postgres"</span>],<br>
+&nbsp;&nbsp;coffee: <span class="k">Infinity</span>,<br>
+&nbsp;&nbsp;openToWork: <span class="k">true</span><span class="cursor"></span><br>
+};
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>پروژه‌ها</h2>
+    <div class="projects">
+      <article class="proj"><h3>پلتفرم رزرو آنلاین</h3><p>سیستم رزرو با پرداخت و اعلان لحظه‌ای برای بیش از ۵۰۰۰ کاربر.</p><ul class="tags"><li>React</li><li>Node.js</li><li>Postgres</li></ul></article>
+      <article class="proj"><h3>ابزار تحلیل داده</h3><p>داشبوردی که گزارش‌های ساعتی را در چند ثانیه می‌سازد.</p><ul class="tags"><li>Python</li><li>FastAPI</li><li>Redis</li></ul></article>
+    </div>
+  </section>
+
+  <section>
+    <h2>سوابق کاری</h2>
+    <div class="job"><div class="when">۱۴۰۲ تا امروز</div><div><h3>برنامه‌نویس ارشد، شرکت نمونه</h3><p>طراحی معماری سرویس‌ها و کاهش زمان پاسخ API تا ۴۰٪.</p></div></div>
+    <div class="job"><div class="when">۱۳۹۹ تا ۱۴۰۲</div><div><h3>برنامه‌نویس بک‌اند، استارتاپ نمونه</h3><p>ساخت API های اصلی محصول و راه‌اندازی خط استقرار خودکار.</p></div></div>
+  </section>
+
+  <section>
+    <h2>مهارت‌ها</h2>
+    <ul class="skills"><li>Python</li><li>JavaScript</li><li>CSS</li><li>HTML</li></ul>
+  </section>
+</main>
+
+<footer id="contact">
+  <a class="mail" href="mailto:radmehrbayat91@gmail.com">radmehrbayat91@gmail.com</a>
+  <div class="social">
+  <a class="pill" href="https://github.com/Nexor-core" target="_blank" rel="noopener">GitHub</a>
+  <a class="pill" href="https://t.me/WebStudioX" target="_blank" rel="noopener">Telegram</a></div>
+  <p class="copy">© ۱۴۰۵ رادمهر بیات</p>
+</footer>
+</body>
+</html>
